@@ -9,7 +9,7 @@ class TaskListScreen extends StatefulWidget {
 
 class _TaskListScreenState extends State<TaskListScreen> {
   List<String> _tasks = [];
-  final _task = TextEditingController();
+  final TextEditingController _task = TextEditingController();
   void dispose() {
     _task.dispose();
     // _amountController.dispose();
