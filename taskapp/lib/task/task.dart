@@ -33,25 +33,29 @@ class _TaskListScreenState extends State<TaskListScreen> {
 
   @override
   Widget build(BuildContext context) {
-    Widget content = Center(
-      child: Column(
+  
+
+   
+    return Scaffold(
+      appBar: AppBar(title: Text("TASK Manager"),),
+        body:  Column(
         children: [
           TextField(
-            decoration: InputDecoration(label: Text("Enter a new task")),
+            decoration: InputDecoration(label: Text("Enter a new task"),),
             controller: _task,
+            
+            
           ),
-          ElevatedButton(onPressed: _addtask, child: const Text("Add Task"))
+          // SizedBox(height: 100,),
+          Center(child: ElevatedButton(onPressed: _addtask, child: const Text("Add Task"))),
+
+         _tasks.isEmpty ? Center(child: Text("No Task Added", style: TextStyle(fontSize: 16),),) : Expanded(
+            child: ListView.builder(
+            itemCount: _tasks.length,
+            itemBuilder: (ctx, index) => ListTile(leading: Text(_tasks[index]),)),
+          )
         ],
       ),
     );
-
-    if (_tasks.isNotEmpty) {
-      ListView.builder(
-          itemCount: _tasks.length,
-          itemBuilder: (ctx, index) => ListTile(
-                leading: Text(_tasks[index]),
-              ));
-    }
-    return Scaffold(body: content);
   }
 }
